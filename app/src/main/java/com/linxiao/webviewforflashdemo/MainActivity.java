@@ -94,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
     webView.setWebChromeClient(new InsideWebChromeClient());
 
-    webView.loadUrl(defaultUrl);
+//    webView.loadUrl(defaultUrl);
+    webView.loadUrl("file:///android_asset/h264.html");
   }
 
   private View mCustomView;
