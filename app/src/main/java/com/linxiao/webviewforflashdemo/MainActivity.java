@@ -17,6 +17,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,10 +25,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
   private WebView webView;
-//    String defaultUrl = "https://www.jiyoushe.cn/";
+  //    String defaultUrl = "https://www.jiyoushe.cn/";
   String defaultUrl = "http://kaq.io/ujQK";
-//  String defaultUrl = "http://m.iqiyi.com/v_19rqy8zme0.html";
-  private FrameLayout mFrameLayout;
+  //  String defaultUrl = "http://m.iqiyi.com/v_19rqy8zme0.html";
+  private RelativeLayout mFrameLayout;
   private View mTitle;
   //  String url = "http://www.1kejian.com/flash/";
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editText = findViewById(R.id.edit);
     editText.setHint(defaultUrl);
 
-    mFrameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+    mFrameLayout = (RelativeLayout) findViewById(R.id.frame_layout);
     //支持javascript
     WebSettings settings = webView.getSettings();
     settings.setJavaScriptEnabled(true);
@@ -115,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
   public void url_list(View view) {
 
 
+  }
+
+  public void refresh(View view) {
+    if (webView != null) {
+      webView.reload();
+    }
   }
 
   private class InsideWebChromeClient extends WebChromeClient {

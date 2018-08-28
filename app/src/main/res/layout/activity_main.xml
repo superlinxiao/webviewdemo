@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frame_layout"
     android:layout_width="match_parent"
@@ -55,4 +55,12 @@
             android:hardwareAccelerated="true" />
 
     </LinearLayout>
-</FrameLayout>
+
+    <Button
+        android:layout_alignParentRight="true"
+        android:text="refresh"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:onClick="refresh"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
