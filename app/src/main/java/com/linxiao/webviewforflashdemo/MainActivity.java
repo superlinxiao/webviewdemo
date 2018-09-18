@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
   private WebView webView;
 //    String defaultUrl = "https://www.jiyoushe.cn/";
-  String defaultUrl = "http://kaq.io/ujQK";
+  String defaultUrl = "http://192.168.0.100:801/test/";
+//  String defaultUrl = "http://kaq.io/ujQK";
 //  String defaultUrl = "http://m.iqiyi.com/v_19rqy8zme0.html";
   private FrameLayout mFrameLayout;
   private View mTitle;
