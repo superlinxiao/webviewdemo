@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
   private WebView webView;
 //    String defaultUrl = "https://www.jiyoushe.cn/";
+//  String defaultUrl = "http://www.baidu.com";
   String defaultUrl = "http://192.168.0.100:801/test/";
 //  String defaultUrl = "http://kaq.io/ujQK";
 //  String defaultUrl = "http://m.iqiyi.com/v_19rqy8zme0.html";
@@ -102,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
   private WebChromeClient.CustomViewCallback mCustomViewCallback;
 
   public void go(View view) {
-
     EditText viewById = findViewById(R.id.edit);
     String url = viewById.getText().toString();
     if (TextUtils.isEmpty(url)) {
@@ -187,5 +189,19 @@ public class MainActivity extends AppCompatActivity {
       }
     }
     return false;
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    CookieSyncManager.createInstance(this);  //Create a singleton CookieSyncManager within a context
+    CookieManager cookieManager = CookieManager.getInstance(); // the singleton CookieManager instance
+    cookieManager.removeAllCookie();// Removes all cookies.
+    CookieSyncManager.getInstance().sync(); // forces sync manager to sync now
+
+    webView.setWebChromeClient(null);
+    webView.setWebViewClient(null);
+    webView.getSettings().setJavaScriptEnabled(false);
+    webView.clearCache(true);
   }
 }
