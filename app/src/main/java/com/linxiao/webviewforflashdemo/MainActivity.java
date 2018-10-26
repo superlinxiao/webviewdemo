@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -125,6 +127,24 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private class InsideWebChromeClient extends WebChromeClient {
+
+
+    @Override
+    public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+      return super.onJsAlert(view, url, message, result);
+    }
+
+    @Override
+    public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+      result.confirm("返回值的内容");
+      return super.onJsPrompt(view, url, message, defaultValue, result);
+    }
+
+    @Override
+    public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+      return super.onJsConfirm(view, url, message, result);
+    }
+
 
     @Override
     public void onShowCustomView(View view, CustomViewCallback callback) {
